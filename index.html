@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC Card System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="" class="logo" data-type="purple" alt="Logo" />
+      <div class="gov-text">
+        <div class="gov-title">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="gov-subtitle">জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো</div>
+      </div>
+      <img src="" class="logo" data-type="green" alt="Logo" />
+    </header>
+    <main>
+      <div class="dashboard" style="text-align: center; max-width: 600px;">
+        <h2>EC Card Management System</h2>
+        <p>Manage employee emigration clearance cards with ease.</p>
+        <a href="login.html" class="btn">Admin Panel</a>
+        <div style="margin-top: 20px;">
+          <p>
+            View a sample card:
+            <a href="employee.html?ecNo=JO-I-2025-6000427" target="_blank">Sample
+              Card</a>
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Assign logos when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        const LOGO_GREEN = window.LOGO_GREEN || '';
+        const LOGO_PURPLE = window.LOGO_PURPLE || '';
+        document.querySelectorAll('img.logo').forEach((img) => {
+          const type = img.dataset.type;
+          img.src = type === 'green' ? LOGO_GREEN : LOGO_PURPLE;
+        });
+      });
+    </script>
+  </body>
+</html>
