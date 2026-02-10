@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emigration Clearance Card</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Government header -->
+    <header class="header">
+      <!-- Placeholders for the two logos; actual images are set via script -->
+      <img src="" alt="Logo" class="logo" data-type="purple" />
+      <div class="gov-text">
+        <div class="gov-title">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="gov-subtitle">জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো</div>
+      </div>
+      <img src="" alt="Logo" class="logo" data-type="green" />
+    </header>
+
+    <main class="content">
+      <!-- Page title -->
+      <div class="page-title">
+        <div class="title-bn">বহির্গমন ছাড়পত্র</div>
+        <div class="title-en">Emigration Clearance</div>
+      </div>
+
+      <!-- Employee profile and details card -->
+      <section class="card" id="cardSection">
+        <div class="profile">
+          <!-- Photo will be set dynamically from data.js or base64 -->
+          <img id="photo" class="photo" src="" alt="Employee photo" />
+          <h2 id="employeeName">Employee Name</h2>
+          <p id="ecNo" class="ec-no"></p>
+          <p id="ecDate" class="ec-date"></p>
+        </div>
+        <div class="details" id="personalDetails"></div>
+      </section>
+
+      <!-- BMET Registration section -->
+      <section class="section">
+        <div class="section-header">
+          <img class="section-logo" src="" alt="Logo" data-type="purple" />
+          <img class="section-logo" src="" alt="Logo" data-type="green" />
+          <span class="section-title">BMET Registration</span>
+        </div>
+        <div class="section-card" id="bmetDetails"></div>
+      </section>
+
+      <!-- Passports section -->
+      <section class="section">
+        <div class="section-header">
+          <img class="section-logo" src="" alt="Logo" data-type="purple" />
+          <img class="section-logo" src="" alt="Logo" data-type="green" />
+          <span class="section-title">Passports</span>
+        </div>
+        <div class="section-card" id="passportDetails"></div>
+      </section>
+    </main>
+
+    <!-- Scripts to populate data -->
+    <script src="data.js"></script>
+    <script src="employee.js"></script>
+    <script>
+      // Base64‑encoded logos. These variables are globally available for
+      // employee.js to use when assigning default logos. We intentionally
+      // do not update any image sources here — employee.js will handle
+      // assigning either these defaults or any uploaded logos.
+      const LOGO_GREEN =
+        'data:image/png;base64,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';
+
+      // Note: We intentionally do not assign these logos here.  The logic in
+      // employee.js will apply them as defaults if an employee object does
+      // not override them.
+    </script>
+  </body>
+</html>
