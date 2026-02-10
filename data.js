@@ -1,0 +1,40 @@
+// Employee data for the admin system.
+//
+// This file defines an initial list of employees. When the admin
+// application first loads it will copy these employees into
+// localStorage so that they persist across sessions. The dynamic card
+// page (employee.html) will also read from localStorage first.  You can
+// add more employees to this array or leave it empty if no initial
+// data is desired.
+
+const employees = [
+  {
+    ecNo: "JO-I-2025-6000427",
+    name: "Saeedellwa",
+    ecDate: "30/Sep/2025",
+    birthDate: "1995-02-10",
+    passportNo: "A17423488",
+    passportIssueDate: "2025-01-01",
+    passportExpireDate: "2029-12-31",
+    visaNo: "800794",
+    visaIssueDate: "2025-09-03",
+    visaExpireDate: "",
+    referralNo: "",
+    recruitingAgency: "BANGLADESH EXPORT CORPORATION (RL0803)",
+    employer: "AYYAM COMPANY",
+    country: "Jordan",
+    bmetNo: "SNF20258426956G",
+    gender: "Female",
+    bloodGroup: "",
+    nid: "5058567891",
+    passportName: "Saeedellwa",
+    passportNo1: "A17423488",
+    photoData:
+      'data:image/jpeg;base64,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',
+  },
+];
+
+// Expose globally so that pages can access default employees
+if (typeof window !== 'undefined') {
+  window.employees = employees;
+}
