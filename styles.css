@@ -1,0 +1,344 @@
+/* Unified styles for the EC Card admin system. This file defines
+   typography, layout and component styling for the login page, dashboard,
+   employee form and dynamic card. It reuses the DejaVu Serif font and
+   colours consistent with the original card design while extending the
+   layout for admin screens. */
+
+@font-face {
+  font-family: 'DejaVu Serif';
+  src: local('DejaVu Serif'), local('DejaVuSerif'),
+       url('https://fonts.gstatic.com/s/dejavuserif/v13/SSexFj_YGxQRZyXr5R8fSXFSLA.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DejaVu Serif', serif;
+  background: linear-gradient(180deg, #f5f8fc 0%, #eaf3fa 100%);
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Header styling used across pages */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.header .logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin: 0 12px;
+}
+.header .gov-text {
+  text-align: center;
+}
+.header .gov-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #166534;
+}
+.header .gov-subtitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #b11270;
+  margin-top: 2px;
+}
+
+/* Login page */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.login-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #334155;
+}
+.form-group input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #166534;
+  box-shadow: 0 0 0 1px #166534;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #166534;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.btn:hover {
+  background-color: #14532d;
+}
+
+/* Dashboard page */
+.dashboard {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dashboard th,
+.dashboard td {
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+.dashboard th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+.dashboard td.actions {
+  white-space: nowrap;
+}
+.dashboard .btn-small {
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+/* Employee form */
+.form-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.form-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.drop-zone {
+  border: 2px dashed #cbd5e1;
+  padding: 12px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #64748b;
+  margin-top: 4px;
+}
+.drop-zone.dragover {
+  background-color: #f1f5f9;
+  border-color: #0ea5e9;
+}
+.crop-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.crop-inner {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.crop-inner img {
+  max-width: 100%;
+  max-height: 70vh;
+}
+.crop-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Card page styling (shared with dynamic employee card)                      */
+/* The following styles are adapted from the standalone card project to match
+   the original emigration clearance design. They define layout for the
+   content wrapper, page titles, profile section, details rows and the
+   registration/passport sections. */
+
+/* Main content wrapper */
+.content {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title for the page */
+.page-title {
+  background-color: #eef2f7;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.page-title .title-bn {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #0f172a;
+}
+.page-title .title-en {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: #334155;
+  letter-spacing: 0.5px;
+}
+
+/* Card styles shared by all sections */
+.card,
+.section-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+}
+.card {
+  margin-bottom: 20px;
+}
+
+/* Profile block */
+.profile {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+.profile h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #0f172a;
+}
+.ec-no,
+.ec-date {
+  font-size: 18px;
+  margin: 2px 0;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* Details table layout */
+.details,
+.section-card {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 12px;
+  padding-top: 12px;
+}
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+}
+.details-row:last-child {
+  border-bottom: none;
+}
+.details-row span:first-child {
+  color: #64748b;
+  flex: 0 0 45%;
+  font-weight: 500;
+}
+.details-row span:last-child {
+  color: #334155;
+  flex: 1;
+  text-align: right;
+  font-weight: 600;
+  word-break: break-word;
+}
+.highlight-value {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+/* Section heading styles */
+.section {
+  margin-bottom: 24px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.section-logo {
+  height: 32px;
+  width: auto;
+  margin-right: 6px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header .logo {
+    margin-bottom: 8px;
+  }
+  .details-row span:first-child {
+    flex: 0 0 50%;
+  }
+}
