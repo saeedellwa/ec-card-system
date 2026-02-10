@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC Card - Add/Edit Employee</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <img src="" class="logo" data-type="purple" alt="Logo" />
+      <div class="gov-text">
+        <div class="gov-title">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="gov-subtitle">জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো</div>
+      </div>
+      <img src="" class="logo" data-type="green" alt="Logo" />
+    </header>
+    <main>
+      <div class="form-container">
+        <h2 id="formTitle">Add Employee</h2>
+        <form id="employeeForm">
+          <div class="form-group">
+            <label for="ecNo">EC No</label>
+            <input type="text" id="ecNo" required />
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="form-group">
+            <label for="ecDate">EC Date</label>
+            <input type="date" id="ecDate" required />
+          </div>
+          <div class="form-group">
+            <label for="birthDate">Birth Date</label>
+            <input type="date" id="birthDate" required />
+          </div>
+          <div class="form-group">
+            <label for="passportNo">Passport No</label>
+            <input type="text" id="passportNo" required />
+          </div>
+          <div class="form-group">
+            <label for="passportIssueDate">Passport Issue Date</label>
+            <input type="date" id="passportIssueDate" required />
+          </div>
+          <div class="form-group">
+            <label for="passportExpireDate">Passport Expire Date</label>
+            <input type="date" id="passportExpireDate" required />
+          </div>
+          <div class="form-group">
+            <label for="visaNo">Visa No</label>
+            <input type="text" id="visaNo" />
+          </div>
+          <div class="form-group">
+            <label for="visaIssueDate">Visa Issue Date</label>
+            <input type="date" id="visaIssueDate" />
+          </div>
+          <div class="form-group">
+            <label for="visaExpireDate">Visa Expire Date</label>
+            <input type="date" id="visaExpireDate" />
+          </div>
+          <div class="form-group">
+            <label for="referralNo">Referral No</label>
+            <input type="text" id="referralNo" />
+          </div>
+          <div class="form-group">
+            <label for="recruitingAgency">Recruiting Agency</label>
+            <input type="text" id="recruitingAgency" />
+          </div>
+          <div class="form-group">
+            <label for="employer">Employer</label>
+            <input type="text" id="employer" />
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" />
+          </div>
+          <div class="form-group">
+            <label for="bmetNo">BMET No</label>
+            <input type="text" id="bmetNo" />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" />
+          </div>
+          <div class="form-group">
+            <label for="bloodGroup">Blood Group</label>
+            <input type="text" id="bloodGroup" />
+          </div>
+          <div class="form-group">
+            <label for="nid">NID</label>
+            <input type="text" id="nid" />
+          </div>
+          <div class="form-group">
+            <label for="passportName">Passport Name</label>
+            <input type="text" id="passportName" />
+          </div>
+          <div class="form-group">
+            <label for="passportNo1">Passport No 1</label>
+            <input type="text" id="passportNo1" />
+          </div>
+          <div class="form-group">
+            <label for="photoFile">Photo</label>
+            <input type="file" id="photoFile" accept="image/*" />
+            <div id="photoDrop" class="drop-zone">Drop photo here or click the file field above</div>
+            <input type="text" id="photo" placeholder="data:image/png;base64,..." />
+          </div>
+          <div class="form-group">
+            <label for="logoLeftFile">Left Logo</label>
+            <input type="file" id="logoLeftFile" accept="image/*" />
+            <div id="logoLeftDrop" class="drop-zone">Drop left logo here or click the file field above</div>
+          </div>
+          <div class="form-group">
+            <label for="logoRightFile">Right Logo</label>
+            <input type="file" id="logoRightFile" accept="image/*" />
+            <div id="logoRightDrop" class="drop-zone">Drop right logo here or click the file field above</div>
+          </div>
+          <button type="submit" class="btn" id="submitBtn">Save</button>
+        </form>
+      </div>
+    </main>
+    <div id="cropModal" class="crop-modal">
+      <div class="crop-inner">
+        <img id="cropImage" alt="Crop preview" />
+        <div class="crop-buttons">
+          <button type="button" id="cropOk" class="btn">Crop</button>
+          <button type="button" id="cropCancel" class="btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+    <script src="form.js"></script>
+  </body>
+</html>
