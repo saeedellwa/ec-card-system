@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC Card Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <img src="" class="logo" data-type="purple" alt="Logo" />
+      <div class="gov-text">
+        <div class="gov-title">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="gov-subtitle">জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো</div>
+      </div>
+      <img src="" class="logo" data-type="green" alt="Logo" />
+    </header>
+    <main>
+      <div class="dashboard">
+        <h2>Employees List</h2>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <a href="employeeForm.html" class="btn">Add Employee</a>
+        </div>
+        <table id="employeesTable">
+          <thead>
+            <tr>
+              <th>EC No</th>
+              <th>Name</th>
+              <th>EC Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+    <script src="data.js"></script>
+    <script>
+      // Use default logos from global variables
+      const LOGO_GREEN = window.LOGO_GREEN || '';
+      const LOGO_PURPLE = window.LOGO_PURPLE || '';
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img.logo').forEach((img) => {
+          img.src = img.dataset.type === 'green' ? LOGO_GREEN : LOGO_PURPLE;
+        });
+      });
+      // Load employees from localStorage or fall back to global employees from data.js
+      function loadEmployees() {
+        let list = [];
+        try {
+          const stored = localStorage.getItem('employees');
+          if (stored) {
+            list = JSON.parse(stored);
+          } else if (Array.isArray(window.employees)) {
+            list = window.employees;
+            // populate localStorage for subsequent use
+            localStorage.setItem('employees', JSON.stringify(list));
+          }
+        } catch (err) {
+          console.error(err);
+        }
+        return list;
+      }
+      function saveEmployees(list) {
+        localStorage.setItem('employees', JSON.stringify(list));
+      }
+      function renderTable() {
+        const tbody = document.querySelector('#employeesTable tbody');
+        tbody.innerHTML = '';
+        const employees = loadEmployees();
+        employees.forEach((emp, index) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${emp.ecNo}</td>
+            <td>${emp.name}</td>
+            <td>${emp.ecDate || ''}</td>
+            <td class="actions">
+              <a href="employee.html?ecNo=${encodeURIComponent(emp.ecNo)}" target="_blank" class="btn btn-small">View</a>
+              <button data-index="${index}" class="btn btn-small edit">Edit</button>
+              <button data-index="${index}" class="btn btn-small delete">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+      renderTable();
+      // handle actions
+      document.getElementById('employeesTable').addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        if (e.target.classList.contains('edit')) {
+          // navigate to form with query param
+          window.location.href = `employeeForm.html?index=${index}`;
+        } else if (e.target.classList.contains('delete')) {
+          if (confirm('Are you sure you want to delete this employee?')) {
+            const list = loadEmployees();
+            list.splice(index, 1);
+            saveEmployees(list);
+            renderTable();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
