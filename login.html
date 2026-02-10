@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC Card Admin Login</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Cropper CSS for consistency, though not used here -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <img src="" class="logo" data-type="purple" alt="Logo" />
+      <div class="gov-text">
+        <div class="gov-title">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="gov-subtitle">জনশক্তি, কর্মসংস্থান ও প্রশিক্ষণ ব্যুরো</div>
+      </div>
+      <img src="" class="logo" data-type="green" alt="Logo" />
+    </header>
+    <main>
+      <div class="login-container">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required />
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      // Default base64 logos reused from the card page
+      const LOGO_GREEN = window.LOGO_GREEN || '';
+      const LOGO_PURPLE = window.LOGO_PURPLE || '';
+      // Assign logos when the page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img.logo').forEach((img) => {
+          const type = img.dataset.type;
+          img.src = type === 'green' ? LOGO_GREEN : LOGO_PURPLE;
+        });
+      });
+      // Hard‑coded credentials for demonstration
+      const ADMIN_EMAIL = 'admin@example.com';
+      const ADMIN_PASSWORD = 'admin123';
+      // Attempt login
+      document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+          // On successful login, redirect to dashboard
+          window.location.href = 'dashboard.html';
+        } else {
+          alert('Invalid credentials');
+        }
+      });
+    </script>
+  </body>
+</html>
